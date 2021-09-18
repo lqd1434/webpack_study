@@ -1,11 +1,11 @@
 {
   "name": "utils_study",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "private": true,
+  "private": false,
   "main": "dist/utils_study.cjs.js",
   "module": "dist/utils_study.esm.js",
   "types": "./dist/types/index.d.ts",
