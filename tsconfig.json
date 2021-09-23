@@ -17,7 +17,8 @@
     "outDir": "./dist",
     "esModuleInterop": true,
     "noImplicitAny": true,
-    "allowJs": false,
+    "allowJs": true,
+    "jsx": "react",
     "sourceMap": true,
     "compileOnSave":true,
     "inlineSourceMap": true,
@@ -34,7 +35,7 @@
     "paths": {
       "utils_study": ["./"]
     },
-    "jsx": "react"
+
   },
   "exclude": [
     "node_modules",
