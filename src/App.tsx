@@ -5,7 +5,7 @@ const App = ()=>{
 	return (
 			<>
 				<div className={styles.app}>App</div>
-				<div>hhhhhhhhhhhh</div>
+				<div>hhhh11111111111111hhhh11hhhh</div>
 			</>
 	)
 }

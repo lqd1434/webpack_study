@@ -1,6 +1,8 @@
 const { merge } = require('webpack-merge')
 const common = require('./webpack.common')
 const {appDistPath} = require('./configPath')
+const { HotModuleReplacementPlugin } = require('webpack')
+const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 
 //开发环境配置
 module.exports = merge(common,{
@@ -14,5 +16,10 @@ module.exports = merge(common,{
 	devServer:{
 		hot:true,
 		compress:true
-	}
+	},
+	plugins:[
+			new HotModuleReplacementPlugin(),
+			new ReactRefreshPlugin(),
+
+	]
 })
