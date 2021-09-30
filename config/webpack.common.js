@@ -72,6 +72,7 @@ module.exports={
 				//cssModule配置
 			{
 				test: /\.css$/i,
+				include: appSrcPath,
 				use: [
 					{
 						loader: "style-loader"

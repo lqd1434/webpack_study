@@ -16,6 +16,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack serve --open --config config/webpack.dev.js",
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
+    "test": "webpack --config config/webpack.test.js",
     "watch": "webpack --watch",
     "publish": "npm publish"
   },
@@ -45,6 +46,7 @@
     "glob": "^7.2.0",
     "html-webpack-plugin": "^5.3.2",
     "mini-css-extract-plugin": "^2.3.0",
+    "optimize-css-assets-webpack-plugin": "^6.0.1",
     "postcss": "^8.3.7",
     "postcss-loader": "^6.1.1",
     "postcss-preset-env": "^6.7.0",

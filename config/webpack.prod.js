@@ -7,6 +7,7 @@ const CssMinifyPlugin = require('css-minimizer-webpack-plugin')
 const PurgeCSSPlugin = require('purgecss-webpack-plugin')
 const glob = require('glob')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCssPlugin = require('optimize-css-assets-webpack-plugin');
 
 //生产环境配置
 module.exports = merge(common,{
@@ -25,6 +26,7 @@ module.exports = merge(common,{
 		new MiniCssExtractPlugin({
 			filename:"[name].css"
 		}),
+			new OptimizeCssPlugin()
 	],
 	optimization: {
 		runtimeChunk:true,
