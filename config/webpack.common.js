@@ -90,7 +90,6 @@ module.exports={
 				test: /(\.module\.scss)$/,
 				include: appSrcPath,
 				use:[
-					"style-loader",
 					{
 						loader: MiniCssExtractPlugin.loader,
 					},
