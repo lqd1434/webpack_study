@@ -22,12 +22,12 @@ module.exports = merge(common,{
 	// 	"react-dom":"ReactDOM"
 	// },
 	plugins: [
-		// new MiniCssExtractPlugin({
-		// 	filename:"[name].css"
-		// }),
-		// new PurgeCSSPlugin({
-		// 	paths:glob.sync(`${appSrcPath}/**/*`,{nodir:true})
-		// }),
+		new MiniCssExtractPlugin({
+			filename:"[name].css"
+		}),
+		new PurgeCSSPlugin({
+			paths:glob.sync(`${appSrcPath}/**/*`,{nodir:true})
+		}),
 	],
 	optimization: {
 		runtimeChunk:true,

@@ -10,7 +10,7 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
 const smp = new SpeedMeasurePlugin();
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const PurgeCSSPlugin = require('purgecss-webpack-plugin')
+// const PurgeCSSPlugin = require('purgecss-webpack-plugin')
 const glob = require('glob')
 
 module.exports={
@@ -26,17 +26,17 @@ module.exports={
 				template: htmlPath,
 				cache:true
 			}),
+		new MiniCssExtractPlugin({
+			filename:"index.css"
+		}),
 		new ESBuildPlugin(),
 		new BundleAnalyzerPlugin(),
 		new ProgressBarPlugin({
 			format: `  :msg [:bar] ${chalk.green.bold(':percent')} (:elapsed s)`
 		}),
-		new MiniCssExtractPlugin({
-			filename:"[name].css"
-		}),
-		new PurgeCSSPlugin({
-			paths:glob.sync(`${appSrcPath}/*`,{nodir:true})
-		}),
+		// new PurgeCSSPlugin({
+		// 	paths:glob.sync(`${appSrcPath}/*`,{nodir:true})
+		// }),
 		new CleanWebpackPlugin(),
 	],
 	resolve: {
@@ -71,19 +71,33 @@ module.exports={
 			// },
 				//cssModule配置
 			{
-				test: /\.module\.(scss|sass)$/,
-				include: appSrcPath,
-				use:[
-					"style-loader",
-					MiniCssExtractPlugin.loader,
+				test: /\.css$/i,
+				use: [
+					{
+						loader: "style-loader"
+					},
 					{
 						loader: "css-loader",
 						options: {
-							modules:true,
-							importLoaders:2,
-							//0 => no loader,
-							//1 => postcss-loader,
-							//2=> postcss-loader,sass-loader
+							modules: {
+								localIdentName: '[name]__[local]--[hash:base64:5]'
+							},
+						}
+					},
+				]
+			},
+			{
+				test: /(\.module\.scss)$/,
+				include: appSrcPath,
+				use:[
+					"style-loader",
+					{
+						loader: MiniCssExtractPlugin.loader,
+					},
+					{
+						loader: "css-loader",
+						options: {
+							importLoaders:3,
 						}
 					},
 					{
@@ -106,7 +120,12 @@ module.exports={
 						}
 					},
 					//将scss编译为css
-					"sass-loader"
+					{
+						loader: "sass-loader",
+						options: {
+							implementation: require.resolve('sass'),
+						}
+					},
 				]
 			},
 			{
