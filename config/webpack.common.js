@@ -18,7 +18,7 @@ module.exports={
 		type:"filesystem"
 	},
 	entry:{
-		index:path.resolve(appSrcPath,'index.tsx')
+		index:path.resolve(appSrcPath,'test/index.js')
 	},
 	plugins: [
 			new HtmlWebpackPlugin({
